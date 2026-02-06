@@ -3,7 +3,7 @@
 <head>
     <style>
         body {
-            background: radial-gradient(1200px 800px at 20% 10%, #2a0f16 0%, #12060a 45%, #000000 100%);
+            background: #000000;
             margin: 0;
             padding: 0;
             color: #f7e9ec;
@@ -22,8 +22,8 @@
         }
 
         .letter-card {
-            background: rgba(26, 10, 14, 0.78);
-            border: 1px solid rgba(255, 208, 220, 0.18);
+            background: linear-gradient(135deg, rgba(30, 18, 21, 0.85) 0%, rgba(152, 100, 117, 0.75) 50%, rgba(194, 131, 152, 0.70) 100%);
+            border: 1px solid rgba(255, 208, 220, 0.25);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
             border-radius: 18px;
             padding: 32px 32px 28px 32px;
@@ -48,20 +48,62 @@
             opacity: 0.9;
         }
 
-        #tiresult b[style*="color:#000000"] {
-            color: #e87a8c !important;
+        .buttons-container {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            font-size: 16px;
+            border: 2px solid rgba(255, 208, 220, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes {
+            background: rgba(152, 100, 117, 0.6);
+            color: #f7e9ec;
+        }
+
+        .btn-yes:hover {
+            background: rgba(194, 131, 152, 0.8);
+            border-color: rgba(255, 208, 220, 0.8);
+            box-shadow: 0 4px 12px rgba(152, 100, 117, 0.4);
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background: rgba(26, 10, 14, 0.6);
+            color: #f7e9ec;
+            position: relative;
+        }
+
+        .btn-no:hover {
+            background: rgba(152, 100, 117, 0.4);
+            border-color: rgba(255, 208, 220, 0.3);
         }
     </style>
 </head>
 <body>
 <div class="letter">
     <div class="letter-card">
-        <h1>Para mi amor</h1>
-        <p>Desde que llegaste, todo se ve mas bonito y mas claro. Me haces reir, me das paz y me inspiras a ser mejor cada dia.</p>
-        <p>Hoy solo quiero decirte algo sencillo y verdadero: gracias por estar, por quererme y por elegirme.</p>
-        <p>Quiero compartir contigo este y todos los dias que vengan. Con todo mi corazon, tengo una pregunta especial:</p>
-        <p><strong>Quieres ser mi San Valentin?</strong></p>
-        <p class="signature">Con todo mi amor</p>
+        <h1>Mi hermosa Aby:</h1>
+        <p>Te amo, te deseo, me encantas, te admiro, te anhelo.</p>
+        <p>Cada día que pasa se convierte en el más asombroso cuando estoy contigo.</p>
+        <p>Deseo compartir una vida contigo. Con todo mi corazón.</p>
+        <p>Mi amor, tengo una pregunta especial.</p>  
+        <p><strong>¿Quieres ser mi San Valentín?</strong></p>
+        <p class="signature">Mati :)</p>
+        <div class="buttons-container">
+            <button class="btn btn-yes" onclick="handleYes()">Sí ♥</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
     </div>
 </div>
 <pre id="tiresult" style="font-size: 9px; background-color: transparent; font-weight: bold; padding: 4px 5px; --fs: 9px; position: fixed; right: 0; top: 0; line-height: 1.1;"><b style="color:#000000">01010000001110110001010100000110001100110110101101100111111000100001100101110111110110010101010101110000110010011001010111110</b>
@@ -128,5 +170,34 @@
 <b style="color:#000000">10001011100111111010001001111010110000111001110100101011011001100001010110000000010101011111101000110110101011110000100010000</b>
 <b style="color:#000000">01111110011110110001010110001000011100010011111100110110000110000001100011111010101000001011001111111001100110100110010101001</b>
 </pre>
+
+<script>
+    const noBtn = document.getElementById('noBtn');
+    
+    function getRandomPosition() {
+        const x = Math.random() * 200 - 100;
+        const y = Math.random() * 200 - 100;
+        return { x, y };
+    }
+    
+    noBtn.addEventListener('mouseenter', function() {
+        const pos = getRandomPosition();
+        noBtn.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+        noBtn.style.transition = 'transform 0.3s ease';
+    });
+    
+    noBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const pos = getRandomPosition();
+        noBtn.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+        noBtn.style.transition = 'transform 0.3s ease';
+    });
+    
+    function handleYes() {
+        alert('¡Sabía que dirías que sí! 🤑🤑🤑 \u2665');
+        noBtn.style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
